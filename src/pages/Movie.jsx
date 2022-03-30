@@ -1,17 +1,28 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/navbar/MovieCard";
+import { axiosInstance } from "../components/network/axiosConfig";
+
 
 export default function Movie() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=4bc8ab92629a7e88ac0b5bb52bcf2173"
-      )
+    // axios
+    //   .get(
+    //     "https://api.themoviedb.org/3/movie/popular?api_key=4bc8ab92629a7e88ac0b5bb52bcf2173"
+    //   )
+    //   .then((res) => setMovies(res.data))
+    //   // .then((res)=>console.log(res))
+    //   .catch((err) => console.log(err));
+    axiosInstance
+      .get("/movie", {
+        params: {
+          limit: 5,
+        },
+      })
       .then((res) => setMovies(res.data))
-      // .then((res)=>console.log(res))
       .catch((err) => console.log(err));
+
   });
 
   return (
