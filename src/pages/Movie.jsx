@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../components/navbar/MovieCard";
 
 export default function Movie() {
-  const [Movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
     axios
       .get(
@@ -17,15 +17,15 @@ export default function Movie() {
   return (
     <>
       <h3>Hello From Movie</h3>
-      {/* <div className="row row-cols-1 row-cols-md-3 g-4">
-        {Movies.map((movie) => {
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {movies.map((movie) => {
           return (
             <div className="col mb-4" key={movie.data}>
               <MovieCard movie={movie} />
             </div>
           );
         })}
-      </div> */}
+      </div>
     </>
   );
 }
