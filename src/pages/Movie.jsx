@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../components/navbar/MovieCard";
 import { axiosInstance } from "../components/network/axiosConfig";
 
-
 export default function Movie() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -15,14 +14,13 @@ export default function Movie() {
     //   // .then((res)=>console.log(res))
     //   .catch((err) => console.log(err));
     axiosInstance
-      .get("/movie", {
+      .get("3/movie/popular", {
         params: {
-          limit: 5,
+          api_key: "d751f12db3431eb3928b112310ae9364",
         },
       })
       .then((res) => setMovies(res.data))
       .catch((err) => console.log(err));
-
   });
 
   return (
