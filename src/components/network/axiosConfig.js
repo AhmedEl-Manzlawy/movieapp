@@ -11,7 +11,7 @@ axiosInstance.interceptors.request.use(
     console.log("INTERCEPTOR", config);
     config.headers["Content-Type"] = "application/json;charset=utf-8";
     config.headers["Authorization"] =
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YmM4YWI5MjYyOWE3ZTg4YWMwYjViYjUyYmNmMjE3MyIsInN1YiI6IjYyNDQzNDM5ZjI2M2JhMDA4YWNhZjFiOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.s5_j7z6GLsbB9DWTeoO8oIttBlid3ZckYUUKci98CE0";
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTU5NDAzN2MyMjkxMGYxMjg1NTU1MjcwMmM1MjFmOCIsInN1YiI6IjVmNWVmMDc4ZDhjYzRhMDAzOWYxOGI5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QhHc19PNx19fIYwJWNTYQMYkRXVdO1_vDJrTRuKfjvQ";
 
     console.log(config);
     return config;

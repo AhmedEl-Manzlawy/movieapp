@@ -1,16 +1,10 @@
+import React from 'react'
 
-function Home (){
+export default function Home() {
+  return (
+    <div>
+        <h1 className="text-center text-danger">Welcome Home</h1>
 
-
-    return(
-            <div className="container-fluid">
-                <h1>
-                     Movies
-                </h1>
-                
-            </div>
-      
-    )
+    </div>
+  )
 }
-
-export default Home

@@ -9,10 +9,10 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-dark border-bottom">
       <Router>
       <Navbar />
-      <div className="container my-5">
+      <div className="container my-5 bg-dark">
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/movie" component={Movie} />

@@ -1,40 +1,46 @@
-// import axios from "axios";
 import React, { useEffect, useState } from "react";
-import MovieCard from "../components/navbar/MovieCard";
-import { axiosInstance } from "../components/network/axiosConfig";
+import MovieCard from "../components/navbar/MovieCard"
+import{getMovies , searchMovie} from "../components/network/MovieAPI"
+import queryString from "query-string";
 
-export default function Movie() {
+import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+export default function Movies() {
+  const history = useHistory();
+  const location = useLocation();
+  console.log("HISTORY", history);
+  console.log("LOCATION", location);
+  const parsed = queryString.parse(location.search);
+  console.log("QQQQ",parsed["query"]);
   const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    // axios
-    //   .get(
-    //     "https://api.themoviedb.org/3/movie/popular?api_key=4bc8ab92629a7e88ac0b5bb52bcf2173"
-    //   )
-    //   .then((res) => setMovies(res.data))
-    //   // .then((res)=>console.log(res))
-    //   .catch((err) => console.log(err));
-    axiosInstance
-      .get("3/movie/popular", {
-        params: {
-          api_key: "d751f12db3431eb3928b112310ae9364",
-        },
-      })
-      .then((res) => setMovies(res.data))
-      .catch((err) => console.log(err));
-  });
 
+  useEffect(() => {
+    if (parsed["query"])
+      searchMovie(parsed["query"])
+        .then((res) => {
+          setMovies(res.data.results);
+        })
+        .catch((err) => console.log(err));
+    else {
+      getMovies()
+        .then((res) => {
+          setMovies(res.data.results);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
+  console.log(movies);
   return (
-    <>
-      <h3>Hello From Movie</h3>
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        {movies.map((movie) => {
-          return (
-            <div className="col mb-4" key={movie.data}>
-              <MovieCard movie={movie} />
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <div className="row row-cols-1 row-cols-md-6 g-2">
+      {movies.map((movie) => {
+        return (
+          <div className="col mb-4" key={movie.id}>
+            <MovieCard movie={movie} />
+          </div>
+        );
+      })}
+    </div>
   );
 }
