@@ -8,7 +8,7 @@ export const getMovies = () => {
   return axiosInstance.get(`/movie/popular`);
 };
 
-export const searchMovie = (query) => {
-  return axiosInstance.get(`/search/movie/?query=${query}`);
-};
+// export const searchMovie = (query) => {
+//   return axiosInstance.get(`/search/movie/?query=${query}`);
+// };
 
