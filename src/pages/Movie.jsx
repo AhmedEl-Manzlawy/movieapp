@@ -33,6 +33,8 @@ export default function Movies() {
 
   console.log(movies);
   return (
+  <>
+      <searchMovie></searchMovie>
     <div className="row row-cols-1 row-cols-md-6 g-2">
       {movies.map((movie) => {
         return (
@@ -42,5 +44,6 @@ export default function Movies() {
         );
       })}
     </div>
+    </>
   );
 }

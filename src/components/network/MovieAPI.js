@@ -4,8 +4,8 @@ export const getMovieDetails = (id) => {
   return axiosInstance.get(`/movie/${id}`);
 };
 
-export const getMovies = () => {
-  return axiosInstance.get(`/movie/popular`);
+export const getMovies = (page) => {
+  return axiosInstance.get(`/movie/popular?page=${page}`);
 };
 
 export const searchMovie = (query) => {

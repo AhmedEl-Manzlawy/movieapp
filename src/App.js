@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import MovieDetails from "./pages/MovieDetails";
 import NotFound from "./pages/Home";
+import Favourite from "./pages/Favourite"
 
 import './App.css';
 
@@ -16,7 +17,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/movie" component={Movie} />
-          <Route path="/details/:id?" component={MovieDetails} />
+          <Route path="/movie/:id" component={MovieDetails} />
+          <Route path="/favourite" component={Favourite} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>

@@ -1,4 +1,4 @@
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import {MovieReducer} from './reducer'
-export const store = createStore(MovieReducer, composeWithDevTools());
+import reducers from "./reducers/combineReducers" ;
+export const store = createStore(reducers, composeWithDevTools());
