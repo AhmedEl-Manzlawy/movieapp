@@ -1,11 +1,9 @@
-
 import React from 'react'
-
 
 export default function Home() {
   return (
-    <div>
-        <h1 className="text-center text-danger">Welcome Home</h1>
+    <div className="text-center text-danger vh-100 ">
+        <h1 >Welcome Home</h1>
 
     </div>
   )

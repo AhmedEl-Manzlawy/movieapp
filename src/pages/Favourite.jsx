@@ -7,7 +7,7 @@ export default function Favourite() {
 
   return (
     <>
-    <div className="row row-cols-1 row-cols-md-6 g-2">
+    <div className="row row-cols-1 row-cols-md-6 g-2 h-100 vh-100">
       {movies.map((movie) => {
         return (
           <div className="col mb-4" key={movie.id}>
