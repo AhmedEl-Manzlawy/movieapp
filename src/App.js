@@ -16,8 +16,8 @@ function App() {
       <div className="container my-5 bg-dark">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/movie" component={Movie} />
-          <Route path="/movie/:id" component={MovieDetails} />
+          <Route path="/movies" component={Movie} />
+          <Route path="/movies/:id" component={MovieDetails} />
           <Route path="/favourite" component={Favourite} />
           <Route path="*" component={NotFound} />
         </Switch>

@@ -45,7 +45,7 @@ export default function MovieCard({ movie }) {
               onClick={() => {
                 removeFromFavourite(movie.id);
               }}
-              className="fa-solid fa-heart large-icon"
+              class="fa-solid fa-heart large-icon"
               aria-hidden="true"
               style={{ color: "red" }}
             ></i>

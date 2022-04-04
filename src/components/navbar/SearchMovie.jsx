@@ -8,7 +8,7 @@ export default function SearchMovie() {
 
   function search(event) {
     event.preventDefault();
-    history.push(`movies?query=${query}`);
+    history.push(`movie?query=${query}`);
   }
 
   function handleInputChange(event) {

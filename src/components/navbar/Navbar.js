@@ -26,7 +26,7 @@ export default function Navbar() {
               fontWeight: "bold",
               color: "red",
             }}
-            to="/movie"
+            to="/movies"
           >
             Movies
           </NavLink>
