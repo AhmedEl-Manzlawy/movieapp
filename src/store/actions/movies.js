@@ -1,7 +1,6 @@
 
 import { GET_MOVIES } from "./types";
-import { getMovies } from "../../network/moviesAPI";
-import { searchMovie } from "../../network/moviesAPI";
+import { searchMovie ,getMovies  } from "../../components/network/MovieAPI";
 
 export const getMoviesList = (page,languageContext) => (dispatch) => {
   return getMovies(page,languageContext)
