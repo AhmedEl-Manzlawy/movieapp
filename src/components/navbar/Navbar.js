@@ -1,12 +1,19 @@
-import React from "react";
-import {  NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import SearchMovie from "./SearchMovie";
+import { LanguageContext } from "../../context/language";
+import { addToQuery } from "../../store/actions/query";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const { languageContext, setLanguageContext } = useContext(LanguageContext);
+  function resetQuery() {
+    dispatch(addToQuery(""));
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between px-2">
-      
       <NavLink
         className="nav-link "
         activeStyle={{
@@ -43,6 +50,15 @@ export default function Navbar() {
           </NavLink>
         </div>
       </div>
+      <button
+        style={{ marginRight: "10px" }}
+        className="btn btn-secondary"
+        onClick={() =>
+          setLanguageContext(languageContext === "ar" ? "en" : "ar")
+        }
+      >
+        {LanguageContext}
+      </button>
 
       <SearchMovie></SearchMovie>
     </nav>

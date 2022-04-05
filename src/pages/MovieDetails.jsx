@@ -1,5 +1,5 @@
 import React from "react";
-import { getMovieDetails } from "../components/network/MovieAPI";
+import { getMovieDetails } from "../components/network/MovieAPI"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 

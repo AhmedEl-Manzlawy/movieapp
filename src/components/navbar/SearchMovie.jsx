@@ -1,14 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch} from "react-redux";
+import { addToQuery } from "../../store/actions/query";
 
 export default function SearchMovie() {
   const [query, setQuery] = useState("");
   const history = useHistory();
+  console.log(history);
+  const location = useLocation();
+  console.log(location);
+  const dispatch = useDispatch();
 
   function search(event) {
+    dispatch(addToQuery(query));
     event.preventDefault();
-    history.push(`movie?query=${query}`);
   }
 
   function handleInputChange(event) {
@@ -26,7 +33,7 @@ export default function SearchMovie() {
         value={query}
         onChange={handleInputChange}
       />
-      <button onClick={search} className="btn btn-outline-warning my-2 my-sm-0">
+      <button onClick={search} className="btn btn-outline-success my-2 my-sm-0">
         Search
       </button>
     </form>

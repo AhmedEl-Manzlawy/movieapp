@@ -1,54 +1,64 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MovieCard from "../components/navbar/MovieCard";
-import { getMovies ,searchMovie } from "../components/network/MovieAPI";
-import queryString from "query-string";
-import { useLocation } from "react-router-dom";
 import {useSelector } from "react-redux";
-
-
-
+import { LanguageContext } from "../context/language";
+import { useDispatch } from "react-redux";
+import { getMoviesList, getSearchMovies } from "../store/actions/movies"
 
 
 export default function Movies() {
-  useSelector((state) => console.log("state from useSelector", state));
-  const location = useLocation();
-  const parsed = queryString.parse(location.search);
-  const [movies, setMovies] = useState([]);
+  // useSelector((state) => console.log("state from useSelector", state));
+  // const location = useLocation();
+  // const parsed = queryString.parse(location.search);
+  // const [movies, setMovies] = useState([]);
+  // const [page, setPage] = useState(1);
+
+  const { languageContext, setLanguageContext } = useContext(LanguageContext);
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies);
+  const query = useSelector((state) => state.query);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    if (parsed["query"]) {
-      console.log("there is query string");
-      searchMovie(parsed["query"])
-        .then((res) => {
-          setMovies(res.data.results);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      console.log("there is no query string");
-      console.log("page parsing", parsed["page"]);
-      if (!parsed["page"]) {
-        setPage(1);
-        getMovies(1)
-          .then((res) => {
-            setMovies(res.data.results);
-          })
-          .catch((err) => console.log(err));
-      } else {
-        getMovies(page)
-          .then((res) => {
-            setMovies(res.data.results);
-          })
-          .catch((err) => console.log(err));
-      }
-    }
-  }, [location.search]);
+  // useEffect(() => {
+    // if (parsed["query"]) {
+    //   console.log("there is query string");
+    //   searchMovie(parsed["query"])
+    //     .then((res) => {
+    //       setMovies(res.data.results);
+    //     })
+    //     .catch((err) => console.log(err));
+    // } else {
+    //   console.log("there is no query string");
+    //   console.log("page parsing", parsed["page"]);
+    //   if (!parsed["page"]) {
+    //     setPage(1);
+    //     getMovies(1)
+    //       .then((res) => {
+    //         setMovies(res.data.results);
+    //       })
+    //       .catch((err) => console.log(err));
+    //   } else {
+    //     getMovies(page)
+    //       .then((res) => {
+    //         setMovies(res.data.results);
+    //       })
+    //       .catch((err) => console.log(err));
+      // }
+    // }
+  // }, [location.search]);
 
   useEffect(() => {
-    getMovies(page).then((res) => {
-      setMovies(res.data.results);
-    });
-  }, [page]);
+    if (query === "") 
+    {
+      console.log("get movies");
+      console.log("query=",query);
+      dispatch(getMoviesList(page, languageContext));
+      console.log(movies);
+    }
+    else dispatch(getSearchMovies(query, languageContext));
+
+  }, [query, page, languageContext]);
+
 
   function nextPage() {
     setPage(page + 1);
