@@ -59,7 +59,7 @@ export default function MovieCard({ movie }) {
         <div class="card-footer bg-black">
       <small class="text-dark">
             <Link to={`/movies/${movie.id}`} className="btn btn-info w-100  m-0">
-              Info
+              More Details
             </Link>
           </small>
     </div>

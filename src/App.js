@@ -1,28 +1,34 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
-import Movie from "./pages/Movie";
 import MovieDetails from "./pages/MovieDetails";
 import NotFound from "./pages/Home";
-import Favourite from "./pages/Favourite"
-
+import Favourite from "./pages/Favourite";
+import { LanguageContext } from "./context/language";
+import { useState } from "react";
+import Movies from "./pages/Movie";
 import './App.css';
 
+
 function App() {
+  const  [languageContext ,setLanguageContext] = useState('en');
+
   return (
-    <div className="App bg-dark border-bottom">
+    <div className="root bg-dark text-light  ">
+      <LanguageContext.Provider value={{languageContext,setLanguageContext}}>
       <Router>
-      <Navbar />
-      <div className="container my-5 bg-dark">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/movies" component={Movie} />
-          <Route path="/movies/:id" component={MovieDetails} />
-          <Route path="/favourite" component={Favourite} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
-    </Router>
+        <Navbar />
+        <div className="container ">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/movies" exact component={Movies} />
+            <Route path="/movies/:id" exact component={MovieDetails} />
+            <Route path="/favourite" exact component={Favourite} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
+      </LanguageContext.Provider>
     </div>
   );
 }
