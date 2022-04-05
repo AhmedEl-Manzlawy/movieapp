@@ -8,7 +8,7 @@ export const addToFavourites = (payload) => {
   };
 };
 
-export const deleteFromFavourites = (payload) => {
+export const deletefromFavourites = (payload) => {
   return {
     type: REMOVE_FAV,
     payload,

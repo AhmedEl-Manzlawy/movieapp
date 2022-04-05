@@ -1,7 +1,8 @@
 import React  from "react";
 import { Link } from "react-router-dom";
 
-import { addToFavourites , deleteFromFavourites } from "../../store/actions/favourite";
+import { addToFavourites } from "../../store/actions/favourite";
+import { deletefromFavourites } from "../../store/actions/favourite";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
@@ -19,7 +20,7 @@ export default function MovieCard({ movie }) {
   };
 
   const removeFromFav = (movieId) => {
-    dispatch(deleteFromFavourites(movieId));
+    dispatch(deletefromFavourites(movieId));
   };
   
   return (

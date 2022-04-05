@@ -9,9 +9,12 @@ export default function favouritesReducer(state = INITIAL_STATE, action) {
       if (state.find((item) => item.id === action.payload.id)) return state;
       return [{...action.payload,favourite:true}].concat(state);
     case REMOVE_FAV:
+      {
         return state.filter((item) => {
           return item.id !== action.payload;
         });
+      }
+
 
     default:
       return state;
