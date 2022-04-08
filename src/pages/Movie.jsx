@@ -7,11 +7,6 @@ import { getMoviesList, getSearchMovies } from "../store/actions/movies"
 
 
 export default function Movies() {
-  // useSelector((state) => console.log("state from useSelector", state));
-  // const location = useLocation();
-  // const parsed = queryString.parse(location.search);
-  // const [movies, setMovies] = useState([]);
-  // const [page, setPage] = useState(1);
 
   const { languageContext, setLanguageContext } = useContext(LanguageContext);
   const dispatch = useDispatch();
@@ -19,34 +14,7 @@ export default function Movies() {
   const query = useSelector((state) => state.query);
   const [page, setPage] = useState(1);
 
-  // useEffect(() => {
-    // if (parsed["query"]) {
-    //   console.log("there is query string");
-    //   searchMovie(parsed["query"])
-    //     .then((res) => {
-    //       setMovies(res.data.results);
-    //     })
-    //     .catch((err) => console.log(err));
-    // } else {
-    //   console.log("there is no query string");
-    //   console.log("page parsing", parsed["page"]);
-    //   if (!parsed["page"]) {
-    //     setPage(1);
-    //     getMovies(1)
-    //       .then((res) => {
-    //         setMovies(res.data.results);
-    //       })
-    //       .catch((err) => console.log(err));
-    //   } else {
-    //     getMovies(page)
-    //       .then((res) => {
-    //         setMovies(res.data.results);
-    //       })
-    //       .catch((err) => console.log(err));
-      // }
-    // }
-  // }, [location.search]);
-
+  
   useEffect(() => {
     if (query === "") 
     {
